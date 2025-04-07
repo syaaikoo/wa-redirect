@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Mini Puzzle</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        background-color: #f5f5ff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+      .box {
+        background: white;
+        padding: 2rem;
+        border-radius: 1rem;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        text-align: center;
+      }
+      input {
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+        border: 1px solid #ccc;
+        margin-top: 1rem;
+      }
+      button {
+        margin-top: 1rem;
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 0.5rem;
+        background-color: #8b5cf6;
+        color: white;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <h2>Sebelum lanjut...</h2>
+      <p>Apa huruf ke-3 dari kata <strong>'Pisang'</strong>?</p>
+      <input type="text" id="answer" placeholder="Masukkan jawaban..." />
+      <br />
+      <button onclick="checkAnswer()">Submit</button>
+      <p id="feedback" style="color: red;"></p>
+    </div>
+
+    <script>
+      function checkAnswer() {
+        const input = document.getElementById("answer").value.trim().toLowerCase();
+        if (input === "s") {
+          const encoded = "aHR0cHM6Ly9hcGkud2hhdHNhcHAuY29tL3NlbmQ/cGhvbmU9NjI4MTU1MzM2Mjc5Ng==";
+          const decoded = atob(encoded);
+          window.location.href = decoded;
+        } else {
+          document.getElementById("feedback").textContent = "Jawaban salah, coba lagi ya!";
+        }
+      }
+    </script>
+  </body>
+</html>
